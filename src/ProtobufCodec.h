@@ -6,6 +6,17 @@
 #include <functional>
 #include <google/protobuf/message.h>
 
+//TODO:
+//  1. len and nameLen should be network byte-order.
+
+// ProtobufCodec Format:
+//    struct ProtobufTransportFormat __attribute__ ((__packed__))
+//    {
+//      uint32_t  len;
+//      uint32_t  nameLen;
+//      char     typeName[nameLen];
+//      char     protobufData[len-nameLen-8];
+//    }
 
 class ProtobufCodec
 {
